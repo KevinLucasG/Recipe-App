@@ -1,0 +1,15 @@
+.row {
+  width: 500px;
+}
+
+.btn-new-recipe {
+  margin: 0 auto;
+  height: 60px;
+  text-align: center;
+  width: 200px;
+}
+
+.ingredient-label {
+  display: flex;
+  gap: 50px;
+}
