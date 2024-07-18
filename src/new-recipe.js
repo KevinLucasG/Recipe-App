@@ -2,6 +2,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnRecipe = document.getElementById("btn-submit-recipe");
   const btnIngredient = document.getElementById("btn-ingredient");
 
+  let ingredientData = [];
+
   btnRecipe.addEventListener("click", SetRecipe);
   btnIngredient.addEventListener("click", SetIngredient);
 
@@ -10,27 +12,25 @@ document.addEventListener("DOMContentLoaded", () => {
     const categoryRecipe = document.getElementById("category-recipe").value;
     const recipeMethod = document.getElementById("recipe-method").value;
 
-    const recipeIngredientName =
-      document.getElementById("ingredient-name").value;
-    const recipeQuantity = document.getElementById("quantity-label").value;
-    const recipeMeasurement = document.getElementById("type-measurement").value;
+    console.log("Ingredient Data:", ingredientData);
 
-    const existingRecipes = JSON.parse(localStorage.getItem("RecipeData"));
+    const existingRecipes =
+      JSON.parse(localStorage.getItem("RecipeData")) || [];
 
-    const recipesArray = Array.isArray(existingRecipes) ? existingRecipes : [];
-
-    recipesArray.push({
+    existingRecipes.push({
       name: recipeName,
       category: categoryRecipe,
       method: recipeMethod,
-      ingredient: recipeIngredientName,
-      quantity: recipeQuantity,
-      Measurement: recipeMeasurement,
+      ingredients: ingredientData, // Use the array of ingredients
     });
 
-    localStorage.setItem("RecipeData", JSON.stringify(recipesArray));
+    localStorage.setItem("RecipeData", JSON.stringify(existingRecipes));
 
     window.location.href = "all-recipes.html";
+    console.log("Recipe added:", existingRecipes);
+
+    // Clear ingredient data after adding the recipe
+    ingredientData = [];
   }
 
   function SetIngredient() {
@@ -55,15 +55,12 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
       const newIngredientName = document.createElement("label");
-      newIngredientName.id = "ingredient-name";
       newIngredientName.textContent = ingredientName;
 
       const quantityLabel = document.createElement("span");
-      quantityLabel.id = "quantity-label";
       quantityLabel.textContent = `Quantity: ${ingredientQuantity}`;
 
       const typeMeasurement = document.createElement("span");
-      typeMeasurement.id = "type-measurement";
       typeMeasurement.textContent = ` ${inputMeasurement}`;
 
       formText.appendChild(newDiv);
@@ -73,11 +70,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       alert("Added");
 
-      window.RecipeData = {
+      // Add ingredient to the array
+      ingredientData.push({
         name: ingredientName,
         quantity: ingredientQuantity,
         measurement: inputMeasurement,
-      };
+      });
 
       document.getElementById("NameIngredient").value = "";
       document.getElementById("quantityInput").value = "";
