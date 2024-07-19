@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .row {
   width: 500px;
 }
@@ -12,4 +18,29 @@
 .ingredient-label {
   display: flex;
   gap: 50px;
+}
+
+.no-border {
+  border: none; /* Remove todas as bordas */
+}
+
+.card-custom {
+  border-bottom: 2px solid #000; /* Adiciona uma borda somente na parte inferior */
+  padding: 15px;
+}
+
+.response-img {
+  max-width: 50%;
+}
+
+.category-custom {
+  background-color: rgb(51, 48, 212);
+}
+
+.method-custom {
+  background-color: rgb(116, 170, 231);
+}
+
+.recipeName-custom {
+  max-height: 50px;
 }
