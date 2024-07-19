@@ -9,7 +9,6 @@
 }
 
 .btn-new-recipe {
-  margin: 0 auto;
   height: 60px;
   text-align: center;
   width: 200px;
@@ -17,7 +16,11 @@
 
 .ingredient-label {
   display: flex;
-  gap: 50px;
+  justify-content: space-between;
+}
+
+#btn-submit-recipe {
+  margin: 0 auto;
 }
 
 .no-border {
@@ -43,4 +46,20 @@
 
 .recipeName-custom {
   max-height: 50px;
+}
+
+#card-recipes {
+  width: 60vw;
+}
+
+@media screen and (min-width: 700px) {
+  .btn-new-recipe {
+    margin-bottom: 100%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #card-recipes {
+    width: 80vw;
+  }
 }
