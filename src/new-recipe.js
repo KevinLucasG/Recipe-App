@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     localStorage.setItem("RecipeData", JSON.stringify(existingRecipes));
 
-    window.location.href = "all-recipes.html";
+    window.location.href = "index.html";
     console.log("Recipe added:", existingRecipes);
 
     // Clear ingredient data after adding the recipe
