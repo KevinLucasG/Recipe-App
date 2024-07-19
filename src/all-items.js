@@ -1,9 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const recipeData = JSON.parse(localStorage.getItem("RecipeData"));
+  const recipeData = JSON.parse(localStorage.getItem("RecipeData")) || {};
 
   console.log(recipeData);
 
-  //Arrumar o bug que toda vez que eu do F5 e sai e volto o RecipeData é deletedado
   if (recipeData.length > 0) {
     Object.keys(recipeData).forEach((key, index) => {
       const recipe = recipeData[key];
@@ -93,7 +92,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   } else {
-    // Selecione o contêiner onde você deseja adicionar o novo link
     const container = document.getElementById("card-recipes");
     container.classList.add("justify-content-center", "align-items-center");
 
@@ -101,16 +99,13 @@ document.addEventListener("DOMContentLoaded", () => {
     icon.className =
       "bi bi-fire fs-2 justify-content-center align-items-center";
 
-    // Crie um novo elemento <a>
     const newRecipeLink = document.createElement("a");
 
-    // Defina os atributos e a classe do link
     newRecipeLink.href = "new-recipe.html";
     newRecipeLink.className =
       "btn btn-primary d-flex justify-content-center align-items-center rounded-3 btn-new-recipe";
     newRecipeLink.textContent = "New Recipe";
 
-    // Adicione o novo link ao contêiner
     container.appendChild(newRecipeLink);
     newRecipeLink.appendChild(icon);
   }
