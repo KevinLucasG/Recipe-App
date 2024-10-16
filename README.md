@@ -22,4 +22,4 @@ Choose ingredients, specify quantities, and select units like kg, liters, cups, 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/recipe-app.git
+   git clone https://github.com/KevinLucasG/Recipe-App.git
